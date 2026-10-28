@@ -1,0 +1,10 @@
+import { Router } from "express";
+import { getUserById, updateMyProfile, setupStudentProfile, setupClientProfile, getUserReviews, } from "../controllers/user.controller.js";
+import { authRequired } from "../middleware/auth.js";
+const router = Router();
+router.put("/me", authRequired, updateMyProfile);
+router.post("/student/profile-setup", authRequired, setupStudentProfile);
+router.post("/client/profile-setup", authRequired, setupClientProfile);
+router.get("/:id/reviews", getUserReviews);
+router.get("/:id", getUserById);
+export default router;
